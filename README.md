@@ -1,2 +1,10 @@
-# LogParser
-project will parse through logs using regex &amp; save them in csv file . can be operated using GUI 
+# Log File Parser
+
+This project parses log files and converts them into CSV format using a GUI application.
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/log_parser_project.git
+   cd log_parser_project
