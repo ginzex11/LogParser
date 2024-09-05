@@ -1,0 +1,35 @@
+# gui/gui_manager.py
+
+from PyQt6.QtWidgets import QApplication, QFileDialog, QMessageBox
+import logging
+
+class GUIManager:
+    def __init__(self):
+        self.app = QApplication([])
+        self.logger = logging.getLogger(__name__)
+        self.logger.debug("GUIManager initialized.")
+
+    def get_file_path(self):
+        self.logger.debug("Opening file dialog.")
+        file_path, _ = QFileDialog.getOpenFileName(
+            None,
+            "Select Data File",
+            "",
+            "All Files (*);;CSV Files (*.csv);;Excel Files (*.xlsx *.xls)"
+        )
+        if file_path:
+            self.logger.info(f"File selected: {file_path}")
+        else:
+            self.logger.info("No file selected.")
+        return file_path
+
+    def show_message(self, title, message):
+        self.logger.debug(f"Showing message box: {title} - {message}")
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle(title)
+        msg_box.setText(message)
+        msg_box.exec_()
+
+    def run(self):
+        self.logger.debug("Starting GUI event loop.")
+        self.app.exec_()
